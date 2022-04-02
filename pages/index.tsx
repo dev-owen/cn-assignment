@@ -2,7 +2,9 @@ import type { NextPage } from 'next'
 import styled from "styled-components";
 import Header from "../components/Header";
 import ShortCutList from "../components/ShortCutList";
-import TodayRevenue from "../components/TodayRevenue";
+import RevenueCard from "../components/RevenueCard";
+import { useEffect, useState } from "react";
+import { accountManage, assetManage, costManage, todayRevenueData, weeklyRevenueData } from "../data/dummy";
 
 
 const Wrapper = styled.div`
@@ -43,6 +45,25 @@ const Wrapper = styled.div`
 `
 
 const Home: NextPage = () => {
+  const [home, setHome] = useState<any>([]);
+  const [bottomSheet, setBottomSheet] = useState<any>([]);
+  useEffect(() => {
+    fetch('https://ma.kcd.partners/staging/mmp/v2/match', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: '{"id_type":"user_business","id":"-1","placement_group":"fe_project_home"}'
+    }).then(r => r.json()).then(data => setHome([...data.placements]));
+    fetch('https://ma.kcd.partners/staging/mmp/v2/match', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: '{"id_type":"user_business","id":"-1","placements":["fe_project_bottomsheet"]}'
+    }).then(r => r.json()).then(data => setBottomSheet([...data.placements]));
+  }, []);
+
   return (
     <Wrapper>
       <Header />
@@ -53,7 +74,11 @@ const Home: NextPage = () => {
           <span>노란우산 공제의 남은 단계가 있습니다</span>
           <img src="/icons/ic__system__chevron_right__outline.svg" alt="화살표"/>
         </div>
-        <TodayRevenue />
+        <RevenueCard data={todayRevenueData} />
+        <RevenueCard data={weeklyRevenueData} />
+        <RevenueCard data={assetManage} />
+        <RevenueCard data={costManage} />
+        <RevenueCard data={accountManage} />
       </div>
     </Wrapper>
   )

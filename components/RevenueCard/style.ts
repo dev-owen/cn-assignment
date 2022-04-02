@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   border-radius: 12px;
   margin-top: 16px;
   
-  div.topBar {
+  .topBar {
     border-bottom: 1px solid gray;
     display: flex;
     padding-bottom: 12px;
@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     }
   }
   
-  div.cardContent {
+  .cardContent {
     
     .cardItem {
       display: flex;
@@ -40,5 +40,13 @@ export const Wrapper = styled.div`
       }
     }
     
+  }
+  
+  .seeMore {
+    border-top: 1px solid #cecece;
+    color: #cecece;
+    text-align: center;
+    font-weight: 500;
+    padding: 12px 0;
   }
 `
