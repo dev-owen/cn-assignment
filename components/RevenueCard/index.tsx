@@ -34,7 +34,7 @@ const RevenueCard = ({data}: IRevenueCard) => {
               </>
             ) : (
               <>
-                <span style={{lineHeight: !!el?.isBoldBig ? '25px' : null}}>{el.label}</span>
+                <span style={{lineHeight: !!el?.isBoldBig ? '25px' : ''}}>{el.label}</span>
                 <span className={`${el.isBoldBig && 'bigBold'} criteria`}>{el?.hasRedDot &&
                 <img src="/icons/reddot.svg" alt="점"/>}{el.value}</span>
                 <img src="/icons/ic__system__chevron_right__outline.svg" alt="화살표"/>

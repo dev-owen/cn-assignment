@@ -4,15 +4,12 @@ import Header from "../components/Header";
 import ShortCutList from "../components/ShortCutList";
 import RevenueCard from "../components/RevenueCard";
 import { useEffect, useState } from "react";
-import {
-  accountManage,
-  assetManage,
-  costManage,
-  todayRevenueData,
-  weeklyRevenueData
-} from "../data/dummy";
+import { accountManage, assetManage, costManage, todayRevenueData, weeklyRevenueData } from "../data/dummy";
 import { IHomeBannerData } from "../components/HomeBanner/type";
 import HomeBanner from '../components/HomeBanner';
+import { useBottomSheet } from "../hooks/useBottomSheet";
+import BottomSheetModal from "../components/BottomSheetModal";
+import { useRouter } from "next/router";
 
 
 const Wrapper = styled.div`
@@ -44,11 +41,66 @@ const Wrapper = styled.div`
       font-size: 14px;
     }
   }
+  
+  .MMPSheetContainer {
+    padding: 16px;
+    text-align: center;
+    
+    .title {
+      font-size: 21px;
+      font-weight: 700;
+      color: #292929;
+      margin-bottom: 16px;
+    }
+    
+    .description {
+      font-size: 14px;
+      color: #5e5e5e;
+      margin-bottom: 16px;
+    }
+    
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    
+    button {
+      font-weight: 600;
+      width: 100%;
+      border: 0;
+      
+      :hover {
+        cursor: pointer;
+      }
+      
+      &.seeMore {
+        border-radius: 16px;
+        background-color: #00B1BB;
+        color: white;
+        padding: 16px 0;
+        margin-bottom: 16px;
+      }
+      
+      &.notShow {
+        font-size: 13px;
+        color: #c6c6c6;
+        background-color: white;
+      }
+    }
+  }
 `
 
 const Home: NextPage = () => {
   const [home, setHome] = useState<IHomeBannerData[]>([]);
   const [bottomSheet, setBottomSheet] = useState<any>([]);
+  const {toggle, isOpenBottomSheet} = useBottomSheet();
+  const router = useRouter();
+
+  const closeHandler = () => {
+    localStorage.setItem('bottomSheet', 'close');
+    toggle(false);
+  }
+
   useEffect(() => {
     fetch('https://ma.kcd.partners/staging/mmp/v2/match', {
       method: 'POST',
@@ -91,11 +143,22 @@ const Home: NextPage = () => {
       body: '{"id_type":"user_business","id":"-1","placements":["fe_project_bottomsheet"]}'
     }).then(r => r.json()).then(data => setBottomSheet([...data.placements]));
   }, []);
-  console.log(home);
   console.log(bottomSheet);
+  useEffect(() => {
+    if(localStorage.getItem('bottomSheet') !== 'close') toggle(true);
+  }, [])
   return (
     <Wrapper>
-      <Header />
+      <BottomSheetModal isOpenBottomSheet={isOpenBottomSheet} toggle={toggle}>
+        <div className="MMPSheetContainer">
+          <div className="title">{bottomSheet[0]?.creatives[0]?.template?.title}</div>
+          <div className="description">{bottomSheet[0]?.creatives[0]?.template?.description}</div>
+          <img src={bottomSheet[0]?.creatives[0]?.template?.image} alt="이미지"/>
+          <button className="seeMore" onClick={() => router.push(bottomSheet[0]?.creatives[0]?.template?.button?.url || '')}>{bottomSheet[0]?.creatives[0]?.template?.button?.label || ''}</button>
+          <button className="notShow" onClick={closeHandler}>오늘 그만보기</button>
+        </div>
+      </BottomSheetModal>
+      <Header clickHandler={() => toggle(true)}/>
       <ShortCutList/>
       <div className="mainContent">
         {home.length >= 2 && <HomeBanner data={home[1]}/>}

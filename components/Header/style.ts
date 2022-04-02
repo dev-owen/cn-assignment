@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
     width: 140px;
     align-items: center;
     
+    :hover {
+      cursor: pointer;
+    }
+    
     p {
       font-weight: bold;
     }
