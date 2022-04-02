@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 const HomeNotice = ({data}: IHomeBanner) => {
   const router = useRouter();
-  const {type, badge, image}= data;
+  const { type, badge, image } = data;
   return (
     <$.Wrapper>
       {type === 'badge' && badge && (
@@ -16,7 +16,7 @@ const HomeNotice = ({data}: IHomeBanner) => {
         </div>
       )}
       {type === 'image' && image && (
-        <div className="imageContainer" style={{backgroundColor: image.backgroundColor, color: image.textColor}}>
+        <div className="imageContainer" style={{backgroundColor: image.backgroundColor, color: image.textColor}} onClick={() => router.push(image.url)}>
           <div className="textArea">
             <div className="titleText">{image.title}</div>
             <div className="descriptionText">{image.description}</div>

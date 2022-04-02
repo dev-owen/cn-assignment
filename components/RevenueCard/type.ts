@@ -3,12 +3,17 @@ export interface IRevenueCard {
 }
 
 export interface IRevenueData {
-  headers: string[],
+  headers: {
+    label: string,
+    isNew?: boolean,
+    hasRedDot?: boolean
+  }[],
   headerCriteria?: string,
   contents: {
       label: string,
       value: string,
-      isBoldBig: boolean
+      isBoldBig: boolean,
+      hasRedDot?: boolean
     }[],
   hasSeeMoreButton: boolean
 }

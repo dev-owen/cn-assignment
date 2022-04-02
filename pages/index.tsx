@@ -13,7 +13,8 @@ import {
   todayRevenueData,
   weeklyRevenueData
 } from "../data/dummy";
-import HomeNotice from "../components/HomeBanner";
+import { IHomeBannerData } from "../components/HomeBanner/type";
+import HomeBanner from '../components/HomeBanner';
 
 
 const Wrapper = styled.div`
@@ -43,7 +44,7 @@ const Wrapper = styled.div`
 `
 
 const Home: NextPage = () => {
-  const [home, setHome] = useState<any>([]);
+  const [home, setHome] = useState<IHomeBannerData[]>([]);
   const [bottomSheet, setBottomSheet] = useState<any>([]);
   useEffect(() => {
     fetch('https://ma.kcd.partners/staging/mmp/v2/match', {
@@ -52,7 +53,33 @@ const Home: NextPage = () => {
         'Content-Type': 'application/json'
       },
       body: '{"id_type":"user_business","id":"-1","placement_group":"fe_project_home"}'
-    }).then(r => r.json()).then(data => setHome([...data.placements]));
+    }).then(r => r.json()).then(data => setHome([...data.placements.map((el: any) => {
+      const template = el?.creatives[0]?.template;
+      if(template?.badge) {
+        return {
+          type: 'badge',
+          badge: {
+            label: template.badge.text,
+            badgeColor: template.badge.color === 'mint' ? '#23D6DC' : template.badge.color,
+            backgroundColor: '#EDFFFF',
+            text: template.text,
+            url: template.url
+          }
+        }
+      } else if(template?.backgroundImage) {
+        return {
+          type: 'image',
+          image: {
+            title: template.title,
+            description: template.description,
+            textColor: template.textColor,
+            backgroundColor: template.backgroundColor,
+            backgroundImage: template.backgroundImage,
+            url: template.url
+          }
+        }
+      } else return { type: 'none' }
+    })]));
     fetch('https://ma.kcd.partners/staging/mmp/v2/match', {
       method: 'POST',
       headers: {
@@ -68,12 +95,13 @@ const Home: NextPage = () => {
       <Header />
       <ShortCutList/>
       <div className="mainContent">
-        <HomeNotice data={homeDummy1}/>
+        {home.length >= 1 && <HomeBanner data={home[0]}/>}
         <RevenueCard data={todayRevenueData} />
+        {home.length >= 2 && <HomeBanner data={home[1]}/>}
         <RevenueCard data={weeklyRevenueData} />
+        {home.length >= 3 && <HomeBanner data={home[2]}/> }
         <RevenueCard data={assetManage} />
         <RevenueCard data={costManage} />
-        <HomeNotice data={homeDummy2}/>
         <RevenueCard data={accountManage} />
         <div className="addButton">
           <img src="/icons/add-fill.svg" alt="+"/>

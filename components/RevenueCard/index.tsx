@@ -8,7 +8,7 @@ const RevenueCard = ({data}: IRevenueCard) => {
     <$.Wrapper hasHeaderCriteria={!!headerCriteria}>
       <div className="topBar">
         {headers.map((el: any, idx: number) => (
-          <div className={`topBarLabel ${idx === 0 && 'selected'}`} key={`tb-${idx}`}>{el}</div>
+          <div className={`topBarLabel ${idx === 0 && 'selected'}`} key={`tb-${idx}`}>{el.label}{el?.isNew && <img className="isNew" src="/icons/isNew.svg" alt="N"/>}{el?.hasRedDot && <img className="bigRedDot" src="/icons/bigRedDot.svg" alt="점"/>}</div>
         ))}
         {headerCriteria && (
           <div className="headerCriteria">{headerCriteria}</div>
@@ -18,7 +18,7 @@ const RevenueCard = ({data}: IRevenueCard) => {
         {contents.map((el: any, idx: number) => (
           <div className="cardItem" key={`card-${idx}`}>
             <span>{el.label}</span>
-            <span className={`${el.isBoldBig && 'bigBold'} criteria`}>{el.value}</span>
+            <span className={`${el.isBoldBig && 'bigBold'} criteria`}>{el?.hasRedDot && <img src="/icons/reddot.svg" alt="점"/>}{el.value}</span>
             <img src="/icons/ic__system__chevron_right__outline.svg" alt="화살표"/>
           </div>
         ))}

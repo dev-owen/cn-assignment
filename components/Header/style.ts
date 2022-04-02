@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 16px 12px;
+  padding: 16px;
   border-bottom: 1px solid #c0c0c0;
   
   div.workplace {
@@ -23,5 +23,9 @@ export const Wrapper = styled.div`
     background-color: white;
     border-radius: 4px;
     border: 1px solid #C6C6C6;
+    
+    img {
+      margin-right: 4px;
+    }
   }
 `

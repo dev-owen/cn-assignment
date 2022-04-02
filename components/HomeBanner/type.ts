@@ -3,7 +3,7 @@ export interface IHomeBanner {
 }
 
 export interface IHomeBannerData {
-  type: 'badge' | 'image'
+  type: 'badge' | 'image' | 'none'
   badge?: {
     label: string,
     badgeColor: string,

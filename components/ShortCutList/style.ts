@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
     label {
       text-align: center;
       margin-top: 8px;
-      font-size: 12px;
+      font-size: 13px;
     }
   }
 `;

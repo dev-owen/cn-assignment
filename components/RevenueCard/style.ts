@@ -8,7 +8,7 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
   
   
   .topBar {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #e5e5e5;
     display: flex;
     padding-bottom: 12px;
     justify-content: ${props => props.hasHeaderCriteria ? 'space-between' : 'block'};
@@ -16,7 +16,20 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
     .topBarLabel {
       font-weight: 500;
       color: gray;
-      margin-right: 8px;
+      margin-right: 12px;
+      
+      img {
+        margin-left: 2px;
+        
+        &.isNew {
+          position: relative;
+          top: 2px;
+        }
+        
+        &.bigRedDot {
+          margin-bottom: 8px;
+        }
+      }
     }
     
     .selected {
@@ -45,6 +58,12 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
       
       .criteria {
         margin-left: auto;
+        
+        img {
+          position: relative;
+          top: 4px;
+          margin-right: 2px;
+        }
       }
     }
     

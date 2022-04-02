@@ -2,7 +2,7 @@ import { IRevenueData } from "../components/RevenueCard/type";
 import { IHomeBannerData } from "../components/HomeBanner/type";
 
 export const todayRevenueData: IRevenueData = {
-  headers: ['오늘 매출', '어제 매출', '포스 매출'],
+  headers: [{label: '오늘 매출'}, {label: '어제 매출'}, {label: '포스 매출'}],
   contents: [
     {
       label: '오늘 (00:00 ~ 14:51)',
@@ -24,7 +24,7 @@ export const todayRevenueData: IRevenueData = {
 }
 
 export const weeklyRevenueData: IRevenueData = {
-  headers: ['주간 매출', '월간 매출'],
+  headers: [{label: '주간 매출', hasRedDot: true}, {label: '월간 매출'}],
   contents: [
     {
       label: '이번주 총 매출',
@@ -46,13 +46,14 @@ export const weeklyRevenueData: IRevenueData = {
 }
 
 export const assetManage: IRevenueData = {
-  headers: ['자산 관리'],
+  headers: [{label: '자산 관리', isNew: true}],
   headerCriteria: '4.19 기준',
   contents: [
     {
       label: '내 매장 신용점수',
       value: '950건',
-      isBoldBig: false
+      isBoldBig: false,
+      hasRedDot: true
     },
     {
       label: '내 대출',
@@ -64,12 +65,13 @@ export const assetManage: IRevenueData = {
 }
 
 export const costManage: IRevenueData = {
-  headers: ['비용 관리'],
+  headers: [{label: '비용 관리'}],
   contents: [
     {
       label: '최근 7일간 세금계산서',
       value: '30건',
-      isBoldBig: false
+      isBoldBig: false,
+      hasRedDot: true
     },
     {
       label: '6월 현금영수증 매입',
@@ -91,7 +93,7 @@ export const costManage: IRevenueData = {
 }
 
 export const accountManage: IRevenueData = {
-  headers: ['계좌 관리'],
+  headers: [{label: '계좌 관리'}],
   headerCriteria: '17:31 기준',
   contents: [
     {
