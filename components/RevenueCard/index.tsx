@@ -3,13 +3,16 @@ import * as $ from './style';
 import { IRevenueCard } from "./type";
 
 const RevenueCard = ({data}: IRevenueCard) => {
-  const {headers, contents, hasSeeMoreButton} = data;
+  const {headers, contents, hasSeeMoreButton, headerCriteria} = data;
   return (
-    <$.Wrapper>
+    <$.Wrapper hasHeaderCriteria={!!headerCriteria}>
       <div className="topBar">
         {headers.map((el: any, idx: number) => (
           <div className={`topBarLabel ${idx === 0 && 'selected'}`} key={`tb-${idx}`}>{el}</div>
         ))}
+        {headerCriteria && (
+          <div className="headerCriteria">{headerCriteria}</div>
+        )}
       </div>
       <div className="cardContent">
         {contents.map((el: any, idx: number) => (

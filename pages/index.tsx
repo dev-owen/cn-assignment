@@ -4,7 +4,16 @@ import Header from "../components/Header";
 import ShortCutList from "../components/ShortCutList";
 import RevenueCard from "../components/RevenueCard";
 import { useEffect, useState } from "react";
-import { accountManage, assetManage, costManage, todayRevenueData, weeklyRevenueData } from "../data/dummy";
+import {
+  accountManage,
+  assetManage,
+  costManage,
+  homeDummy1,
+  homeDummy2,
+  todayRevenueData,
+  weeklyRevenueData
+} from "../data/dummy";
+import HomeNotice from "../components/HomeBanner";
 
 
 const Wrapper = styled.div`
@@ -18,29 +27,18 @@ const Wrapper = styled.div`
     margin: 0;
   }
   
-  div.mainContent {
-    background-color: #e5e5e5;
-    padding: 1rem;
-    
-    div.homeBanner {
-      background-color: #FFF1ED;
-      border: 1px solid gray;
-      height: 48px;
-      vertical-align: center;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      text-align: center;
-      display: flex;
-      justify-content: space-between;
-      
-      span.badge {
-        background-color: #FF7452;
-        color: white;
-        padding: 4px;
-        border-radius: 4px;
-      }
-    }
+  .mainContent {
+    background-color: #f5f5f5;
+    padding: 0 1rem 1rem;
+  }
+  
+  .addButton {
+    margin-top: 16px;
+    background-color: #ececec;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 12px;
+    text-align: center;
   }
 `
 
@@ -63,22 +61,24 @@ const Home: NextPage = () => {
       body: '{"id_type":"user_business","id":"-1","placements":["fe_project_bottomsheet"]}'
     }).then(r => r.json()).then(data => setBottomSheet([...data.placements]));
   }, []);
-
+  console.log(home);
+  console.log(bottomSheet);
   return (
     <Wrapper>
       <Header />
       <ShortCutList/>
       <div className="mainContent">
-        <div className="homeBanner">
-          <span className="badge" >신청중</span>
-          <span>노란우산 공제의 남은 단계가 있습니다</span>
-          <img src="/icons/ic__system__chevron_right__outline.svg" alt="화살표"/>
-        </div>
+        <HomeNotice data={homeDummy1}/>
         <RevenueCard data={todayRevenueData} />
         <RevenueCard data={weeklyRevenueData} />
         <RevenueCard data={assetManage} />
         <RevenueCard data={costManage} />
+        <HomeNotice data={homeDummy2}/>
         <RevenueCard data={accountManage} />
+        <div className="addButton">
+          <img src="/icons/add-fill.svg" alt="+"/>
+          <span>추가하기</span>
+        </div>
       </div>
     </Wrapper>
   )

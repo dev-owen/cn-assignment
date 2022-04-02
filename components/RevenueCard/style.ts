@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
   background-color: white;
   padding: 16px;
   border-radius: 12px;
   margin-top: 16px;
   
+  
   .topBar {
     border-bottom: 1px solid gray;
     display: flex;
     padding-bottom: 12px;
+    justify-content: ${props => props.hasHeaderCriteria ? 'space-between' : 'block'};
     
     .topBarLabel {
       font-weight: 500;
@@ -21,6 +23,12 @@ export const Wrapper = styled.div`
       font-weight: 700;
       color: black;
     }
+  }
+  
+  .headerCriteria {
+    font-size: 13px;
+    color: #9f9f9f;
+    margin-left: auto;
   }
   
   .cardContent {
