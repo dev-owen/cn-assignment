@@ -8,8 +8,6 @@ import {
   accountManage,
   assetManage,
   costManage,
-  homeDummy1,
-  homeDummy2,
   todayRevenueData,
   weeklyRevenueData
 } from "../data/dummy";
@@ -20,7 +18,6 @@ import HomeBanner from '../components/HomeBanner';
 const Wrapper = styled.div`
   width: 360px;
   flex-direction: column;
-  border: 1px solid gray;
   display: flex;
   margin: 0 auto;
   
@@ -40,6 +37,12 @@ const Wrapper = styled.div`
     padding: 12px 0;
     border-radius: 12px;
     text-align: center;
+    
+    span {
+      position: relative;
+      bottom: 6px;
+      font-size: 14px;
+    }
   }
 `
 
@@ -95,9 +98,9 @@ const Home: NextPage = () => {
       <Header />
       <ShortCutList/>
       <div className="mainContent">
-        {home.length >= 1 && <HomeBanner data={home[0]}/>}
-        <RevenueCard data={todayRevenueData} />
         {home.length >= 2 && <HomeBanner data={home[1]}/>}
+        <RevenueCard data={todayRevenueData} />
+        {home.length >= 1 && <HomeBanner data={home[0]}/>}
         <RevenueCard data={weeklyRevenueData} />
         {home.length >= 3 && <HomeBanner data={home[2]}/> }
         <RevenueCard data={assetManage} />

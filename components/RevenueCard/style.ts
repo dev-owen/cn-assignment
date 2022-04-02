@@ -19,7 +19,7 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
       margin-right: 12px;
       
       img {
-        margin-left: 2px;
+        margin-left: 4px;
         
         &.isNew {
           position: relative;
@@ -51,6 +51,14 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
       justify-content: space-between;
       padding: 12px 0;
       
+      img.icon {
+        margin-right: 8px;
+      }
+      
+      span {
+        font-size: 14px;
+      }
+      
       .bigBold {
         font-size: 20px;
         font-weight: 700;
@@ -58,6 +66,7 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
       
       .criteria {
         margin-left: auto;
+        font-weight: 600;
         
         img {
           position: relative;
@@ -65,15 +74,37 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
           margin-right: 2px;
         }
       }
+      
+      .textContainer {
+        .title {
+          font-size: 14px;
+          color: #1C1C1C;
+          margin-bottom: 4px;
+        }
+        .description {
+          font-size: 13px;
+          color: #9F9F9F
+        }
+      }
+      
+      .valueContainer {
+        margin-top: 4px;
+        
+        img.arrowDown {
+          top: 4px;
+          position: relative;
+        }
+      }
     }
     
   }
   
   .seeMore {
-    border-top: 1px solid #cecece;
-    color: #cecece;
+    border-top: 1px solid #F5F5F5;
+    color: #9F9F9F;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
     padding: 12px 0;
+    font-size: 14px;
   }
 `

@@ -29,17 +29,20 @@ export const weeklyRevenueData: IRevenueData = {
     {
       label: '이번주 총 매출',
       value: '12,102,500원',
-      isBoldBig: false
+      isBoldBig: false,
+      description: '5.10 (월) ~ 5.13 (목)'
     },
     {
       label: '지난주 총 매출',
       value: '14,539,600원',
-      isBoldBig: false
+      isBoldBig: false,
+      description: '5.3 (월) ~ 5.9 (일)'
     },
     {
       label: '작년 5월 2주차 총 매출',
       value: '14,539,600원',
-      isBoldBig: false
+      isBoldBig: false,
+      description: '2020.5.2 (월) ~ 5.8 (일)'
     },
   ],
   hasSeeMoreButton: false
@@ -53,12 +56,14 @@ export const assetManage: IRevenueData = {
       label: '내 매장 신용점수',
       value: '950건',
       isBoldBig: false,
-      hasRedDot: true
+      hasRedDot: true,
+      description: '새로운 변동이력이 있습니다'
     },
     {
       label: '내 대출',
       value: '157,671,000원',
-      isBoldBig: false
+      isBoldBig: false,
+      description: '4.19 기준'
     }
   ],
   hasSeeMoreButton: false
@@ -71,7 +76,8 @@ export const costManage: IRevenueData = {
       label: '최근 7일간 세금계산서',
       value: '30건',
       isBoldBig: false,
-      hasRedDot: true
+      hasRedDot: true,
+      description: '발급일 기준'
     },
     {
       label: '6월 현금영수증 매입',
@@ -104,41 +110,24 @@ export const accountManage: IRevenueData = {
     {
       label: '신한은행',
       value: '19,380,400원',
-      isBoldBig: false
+      isBoldBig: false,
+      description: '281**12321',
+      iconSrc: '/icons/shinhan.svg'
     },
     {
       label: '우리은행',
       value: '잔액보기',
-      isBoldBig: false
+      isBoldBig: false,
+      description: '100**95702',
+      iconSrc: '/icons/woori.svg'
     },
     {
       label: '하나은행',
       value: '7,339,310원',
-      isBoldBig: false
+      isBoldBig: false,
+      description: '381**02912',
+      iconSrc: '/icons/hana.svg'
     }
   ],
   hasSeeMoreButton: true
-}
-
-export const homeDummy1: IHomeBannerData = {
-  type: 'badge',
-  badge: {
-    label: '추천글',
-    badgeColor: 'mint',
-    backgroundColor: '#FF7452',
-    text: "네, 제가 주인입니다(2)",
-    url: 'https://offline.cashnote.kr/content_pages/13514?business_id={public_id}&utm_source=main_tab'
-  }
-}
-
-export const homeDummy2: IHomeBannerData = {
-  type: 'image',
-  image: {
-    title: '최대 100만원 이자지원!',
-    description: '사장님 대출이자 대신 내드립니다.',
-    textColor: '#292929',
-    backgroundColor: '#EBECF0',
-    backgroundImage: 'https://bluebird-production.s3.amazonaws.com/uploads/image/image/4795/%EC%9D%B4%EC%9E%90%EC%A7%80%EC%9B%90%EC%9D%B4%EB%B2%A4%ED%8A%B8_home_top.png',
-    url: 'https://offline.cashnote.kr/finance?utm_source=cashnote_service&utm_medium=home_top_banner&utm_campaign=finance_page_support_interest&utm_content=max_million'
-  },
 }

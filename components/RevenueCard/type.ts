@@ -11,9 +11,11 @@ export interface IRevenueData {
   headerCriteria?: string,
   contents: {
       label: string,
+      description?: string,
       value: string,
       isBoldBig: boolean,
       hasRedDot?: boolean
+      iconSrc?: string
     }[],
   hasSeeMoreButton: boolean
 }

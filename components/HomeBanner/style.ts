@@ -22,8 +22,8 @@ export const Wrapper = styled.div`
     }
   
     span.badge {
-      padding: 4px;
-      border-radius: 4px;
+      padding: 4px 6px;
+      border-radius: 6px;
       font-size: 12px;
       color: white;
     }
