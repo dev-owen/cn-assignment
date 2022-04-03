@@ -15,8 +15,8 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
     
     .topBarLabel {
       font-weight: 500;
-      color: gray;
-      margin-right: 12px;
+      color: #9f9f9f;
+      margin-right: 16px;
       
       img {
         margin-left: 4px;
@@ -33,8 +33,8 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
     }
     
     .selected {
-      font-weight: 700;
-      color: black;
+      font-weight: 600;
+      color: #1C1C1C;
     }
   }
   
@@ -49,7 +49,7 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
     .cardItem {
       display: flex;
       justify-content: space-between;
-      padding: 12px 0;
+      padding: 16px 0;
       
       img.icon {
         margin-right: 8px;
@@ -83,7 +83,8 @@ export const Wrapper = styled.div<{hasHeaderCriteria: boolean}>`
         }
         .description {
           font-size: 13px;
-          color: #9F9F9F
+          color: #9F9F9F;
+          font-weight: 300;
         }
       }
       

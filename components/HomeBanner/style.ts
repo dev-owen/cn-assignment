@@ -18,14 +18,20 @@ export const Wrapper = styled.div`
     margin-top: 16px;
     
     span.text {
-      margin-top: 2px;
+      margin-top: 4px;
     }
   
     span.badge {
-      padding: 4px 6px;
+      padding: 5px 7px;
       border-radius: 6px;
       font-size: 12px;
       color: white;
+    }
+    
+    img {
+      width: 16px;
+      height: 16px;
+      margin-top: 4px;
     }
   }
   
@@ -45,7 +51,7 @@ export const Wrapper = styled.div`
       
       .titleText {
         font-size: 14px;
-        font-weight: bold;
+        font-weight: 600;
       }
       
       .descriptionText {

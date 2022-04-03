@@ -54,7 +54,7 @@ export const assetManage: IRevenueData = {
   contents: [
     {
       label: '내 매장 신용점수',
-      value: '950건',
+      value: '950점',
       isBoldBig: false,
       hasRedDot: true,
       description: '새로운 변동이력이 있습니다'
