@@ -5,13 +5,13 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 12px 16px;
   flex-wrap: wrap;
+  justify-content: space-around;
   
-  div.shortcut {
+  .shortcut {
     display: flex;
     flex-direction: column;
-    width: calc(25% - 24px);
     padding: 4px;
-    margin: 12px;
+    margin: 16px;
     
     label {
       text-align: center;

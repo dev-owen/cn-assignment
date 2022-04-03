@@ -32,7 +32,7 @@ const ShortCutList = () => {
       label: '직원'
     },
     {
-      icon: '/icons/ic__service__all_view.svg',
+      icon: '/icons/ic__service__all_views.svg',
       label: '전체보기'
     }
   ]

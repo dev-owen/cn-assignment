@@ -31,7 +31,7 @@ export const ModalWrapper = styled.div`
 
 export const ContentContainer = styled.div`
   width: 100%;
-  padding: 16px;
+  padding: 20px;
 `;
 
 export const ModalHeaderContainer = styled.div`
@@ -42,8 +42,6 @@ export const ModalHeaderContainer = styled.div`
 `;
 
 export const CloseIconContainer = styled.img`
-  width: 1rem;
-  height: 1rem;
   :hover {
     cursor: pointer;
   }
